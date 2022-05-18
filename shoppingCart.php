@@ -51,7 +51,6 @@
             </nav>
 
         </div>
-        <div class='row'>
         <br>
         <br>
         <br>
@@ -60,6 +59,8 @@
         <br>
         <br>
         <br>
+        <div class='row bg-secondary'>
+        
 
             <?php
                 //website zum Anzeigen: http://localhost/ikea/swp-web-ikea/shoppingCart.php
@@ -89,7 +90,7 @@
 
             <br>
             <br>
-            <table style="width:100%">
+            <table style="width:75%">
 
                 <?php
                     while($row = mysqli_fetch_assoc($result)){
@@ -112,7 +113,9 @@
             <?php
                 mysqli_close($conn);
             ?>
-
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 
