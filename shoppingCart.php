@@ -51,6 +51,69 @@
             </nav>
 
         </div>
+        <div class='row'>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+            <?php
+                //website zum Anzeigen: http://localhost/ikea/swp-web-ikea/shoppingCart.php
+    
+                $servername = "localhost";
+                $username = "root";
+                $passwort = "";
+                $dbname = "ikea";
+            ?>
+
+            <?php   
+                //Create connection
+                $conn = mysqli_connect($servername,$username,$passwort,$dbname);
+    
+                // Check connection
+                if(!$conn){
+                    die("Connection failed miserably: " .mysqli_connect_error());
+                }
+                else{
+                    //echo "mit DB verbunden <br><br>";
+                }
+    
+                $sql = "SELECT * FROM cart JOIN article USING(articleId)";
+                $result = mysqli_query($conn, $sql);
+                echo"<center><h3><br> <br>" .mysqli_num_rows($result) . " Waren in Ihrem Warenkorb</h3></center>";
+            ?>
+
+            <br>
+            <br>
+            <table style="width:100%">
+
+                <?php
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<tr>";
+                    
+                        $articleId = $row["articleId"];
+                        $articleName = $row["articleName"];
+                        $articlePrice = $row["articlePrice"];
+                        $articleAmount = $row["articleAmount"];
+
+                        echo "<td>" . $articleName . "</td>";
+                        echo "<td>" . $articlePrice . "</td>";
+                        echo "<td>" . $articleAmount . "</td>";
+                        echo "<td> <a href='delete.php?personId=$articleId'>Löschen</a></td>";
+                        echo "</tr>";
+                    }      
+                ?>
+            </table>
+
+            <?php
+                mysqli_close($conn);
+            ?>
+
+        </div>
     </div>
 
 </body>
