@@ -4,13 +4,21 @@
     width: 144;
 }
 .footer-text {
-    
-    
+     
     text-align: center;
     
 }
 .img{
-    height: 100;
-    width: 100;
-    position: center;
+    height: 200;
+    width: 200;
+    display:block;
+    margin-left: auto;
+    margin-right:auto;
+}
+.txt{
+    
+   text-align:center;
+}
+border-color{
+    border-color:coral;
 }
