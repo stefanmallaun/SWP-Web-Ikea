@@ -85,7 +85,7 @@
     
                 $sql = "SELECT * FROM cart JOIN article USING(articleId)";
                 $result = mysqli_query($conn, $sql);
-                echo"<center><h3><br> <br>" .mysqli_num_rows($result) . " Waren in Ihrem Warenkorb</h3></center>";
+                echo"<center><h3><br> <br>Es sind " .mysqli_num_rows($result) . " Waren in Ihrem Warenkorb</h3></center>";
             ?>
 
             <br>
@@ -101,10 +101,13 @@
                         $articlePrice = $row["articlePrice"];
                         $articleAmount = $row["articleAmount"];
 
+                        $gesamtPreis = $articlePrice * $articleAmount;
+                        
+                        echo "<td>" . $articleAmount . "x </td>";
                         echo "<td>" . $articleName . "</td>";
-                        echo "<td>" . $articlePrice . "</td>";
-                        echo "<td>" . $articleAmount . "</td>";
-                        echo "<td> <a href='delete.php?personId=$articleId'>Löschen</a></td>";
+                        echo "<td>" . $gesamtPreis . "</td>";
+                        
+                        echo "<td> <a href='delete.php?personId=$articleId'>entfernen</a></td>";
                         echo "</tr>";
                     }      
                 ?>
