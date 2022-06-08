@@ -22,3 +22,7 @@
 border-color{
     border-color:coral;
 }
+a{ text-decoration: none; 
+    text-decoration-color: black;
+}
+a:hover{ text-decoration: none; }
