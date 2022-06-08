@@ -12,7 +12,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Ikea.css" />
+    
+    <style>
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid black;
+}
+
+.button1:hover {
+  background-color: #469ddb;
+  color: white;
+}
+
+    </style>
 </head>
 
 <body>
@@ -54,11 +80,7 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+
         <div class='row bg-secondary'>
         
 
@@ -69,6 +91,8 @@
                 $username = "root";
                 $passwort = "";
                 $dbname = "ikea";
+
+                $warengesamtpreis = 0;
             ?>
 
             <?php   
@@ -85,12 +109,15 @@
     
                 $sql = "SELECT * FROM cart JOIN article USING(articleId)";
                 $result = mysqli_query($conn, $sql);
-                echo"<center><h3><br> <br>Es sind " .mysqli_num_rows($result) . " Waren in Ihrem Warenkorb</h3></center>";
+                echo"<center><br><br><h1>Es sind " .mysqli_num_rows($result) . " Waren in Ihrem Warenkorb</h1></center>";
             ?>
 
-            <br>
-            <br>
             <table style="width:75%">
+                <tr>
+                    <td><h3><center>Anzahl</center></h3></td>
+                    <td><h3><center>Name</center></h3></td>
+                    <td><h3><center>Preis</center></h3></td>
+                </tr>
 
                 <?php
                     while($row = mysqli_fetch_assoc($result)){
@@ -102,23 +129,45 @@
                         $articleAmount = $row["articleAmount"];
 
                         $gesamtPreis = $articlePrice * $articleAmount;
-                        
-                        echo "<td>" . $articleAmount . "x </td>";
-                        echo "<td>" . $articleName . "</td>";
-                        echo "<td>" . $gesamtPreis . "</td>";
-                        
-                        echo "<td> <a href='delete.php?personId=$articleId'>entfernen</a></td>";
-                        echo "</tr>";
-                    }      
-                ?>
-            </table>
+                        $warengesamtpreis = $warengesamtpreis + $gesamtPreis;
 
+                        echo "<td><center>" . $articleAmount . "x </center></td>";
+                        echo "<td><center>" . $articleName . "</center></td>";
+                        echo "<td><center>" . $gesamtPreis . "€ </center></td>";
+                        
+                        echo "<td><center> <a href='delete.php?personId=$articleId'>entfernen</a></center></td>";
+                        echo "</tr>";
+                    }
+                    echo "<tr><td></td><td><h3><center>Summe</center></h3></td><td><h3><center>" . $warengesamtpreis . "€ </center></h3></td></tr>"      
+                ?>
+                <tr><br></tr>
+                <tr><br></tr>
+            </table>
             <?php
                 mysqli_close($conn);
             ?>
-            <br>
-            <br>
-            <br>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class='row bg-secondary'>
+            <center>
+                <br>
+                <br>
+                <input class="form-check-input" type="checkbox" value="" id="nl">
+                <label class="form-check-label" for="nl">Ich möchte den kostenlosen Newsletter an meine Email gesendet bekommen.</label>
+                <br>
+                <input class="form-check-input" type="checkbox" value="" id="agb">
+                <label class="form-check-label" for="agb">Ich habe die AGB's gelesen und stimme ihnen zu.</label>
+                <br>
+                <input class="form-check-input" type="checkbox" value="" id="ds">
+                <label class="form-check-label" for="ds">Ich habe die Datenschutzrichtlinien gelesen und stimme ihnen zu.</label>
+                <br>
+                <button type="button" class="button button1">KOSTENPFLICHTIG BESTELLEN!</button>
+                <br>
+                <br>
+            </center>
         </div>
     </div>
 
