@@ -1,5 +1,7 @@
 <html>
-
+<?php
+session_start();
+?>
 <head>
     <title>Warenkorb</title>
 
@@ -165,12 +167,14 @@
                 <label class="form-check-label" for="ds">Ich habe die Datenschutzrichtlinien gelesen und stimme ihnen zu.</label>
                 <br>
                 <button type="button" class="button button1">KOSTENPFLICHTIG BESTELLEN!</button>
+                <?php
+                    session_destroy();
+                ?>
                 <br>
                 <br>
             </center>
         </div>
     </div>
-
 </body>
 
 </html>
