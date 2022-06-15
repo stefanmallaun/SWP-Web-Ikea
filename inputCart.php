@@ -1,7 +1,7 @@
+
 <html>
     <head>
-        <title>INSERT</title>
-        <meta charset="UTF-8"/>
+        <title>Server Seite</title>
     </head>
     <body>
         <?php
@@ -11,7 +11,7 @@
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $dbname = "ikea";
+            $dbname = "web3bg2";
 
             //create connection
             $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -22,17 +22,17 @@
             }
             echo "Mit Db verbunden<br>";
             
-            //insert value
-            $sql = "INSERT INTO cart VALUES('$articleId', 1);";
+            //insert values
+            $sql = "INSERT INTO cart (articleId, articleAmount) VALUES ($articleId,1)";
 
-            //check delete
-            if (mysqli_query($conn, $sql)) {
-                echo "insert secessfully";
+            //check insert
+            if ($conn->query($sql) === TRUE) {
+                echo "Eintrag ERFOLGREICH";
                 header("Location: Main.php");
             } else {
-                echo "Error: " . mysqli_error($conn);
+                echo "Error: " . $sql . "<br>" . $conn->error;
             }
-            mysqli_close($conn);   
+            $conn->close();
         ?> 
     </body>
 </html>

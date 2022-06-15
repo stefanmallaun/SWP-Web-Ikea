@@ -105,7 +105,7 @@ session_start();
               </div>
               <p class="fbText">Preis: 210€ <br> Farben: 1</p>   
               <form method="post">
-                    <input type="submit" href='inputCart.php?articleId=2'/>
+                    <input type="submit" href="inputCart.php?articleId='2'"/>
                 </form>
                 
                 
