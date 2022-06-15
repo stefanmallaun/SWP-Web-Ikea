@@ -1,11 +1,11 @@
 <DOCTYPE html>
 <html>
-<?php
-session_start();
-?>
+
   <head>
     <title>Ikea</title>
-    
+    <?php
+session_start();
+?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
     <link rel="stylesheet" href="style.css"/>
@@ -29,9 +29,9 @@ session_start();
         $servername = "localhost";
         $username = "root";
         $passwort = "";
-        $dbname = "ikea";
-      ?>
-      <?php   
+        $dbname = "article";
+      
+         
         //Create connection
         $conn = mysqli_connect($servername,$username,$passwort,$dbname);
     
@@ -103,7 +103,8 @@ session_start();
               <div>
                 <img class ="img" src="img/Tische/lisabo-tisch-schwarz__0737106_pe740884_s5.avif"  text-align: center > 
               </div>
-              <p class="fbText">Preis: 210€ <br> Farben: 1</p>     
+              <p class="fbText">Preis: 210€ <br> Farben: 1</p>   
+                <button type="button" class="btn btn-purple"><i class="fas fa-heart pr-2" ></i>Like</button>
             </div>
             <div id = "2" class="col border border-primary rounded m-5 pb-2 ">
               <p class="txt">Enrico</p>
@@ -117,7 +118,7 @@ session_start();
               <div>
                 <img class ="img" src="img/Tische/moerbylanga-tisch-eichenfurnier-braun-las-__0737110_pe740888_s5.avif"  text-align: center > 
               </div>
-              <p class="fbText">Preis: 210€ <br> Farben: 3</p>
+              <p class="fbText">Preis: 110€ <br> Farben: 7</p>
             </div>
             <div class="col-sm-12 text-right"><a href="#">mehr</a></div>
           </div>
