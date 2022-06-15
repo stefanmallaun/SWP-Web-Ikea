@@ -29,7 +29,7 @@ session_start();
         $servername = "localhost";
         $username = "root";
         $passwort = "";
-        $dbname = "article";
+        $dbname = "ikea";
       
          
         //Create connection
@@ -50,7 +50,7 @@ session_start();
             <a class="navbar-brand" href="Main.html">
               <img src="Ikea_logo.svg.png" class="logo">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
@@ -104,7 +104,11 @@ session_start();
                 <img class ="img" src="img/Tische/lisabo-tisch-schwarz__0737106_pe740884_s5.avif"  text-align: center > 
               </div>
               <p class="fbText">Preis: 210€ <br> Farben: 1</p>   
-                <button type="button" class="btn btn-purple"><i class="fas fa-heart pr-2" ></i>Like</button>
+              <form method="post">
+                    <input type="submit" href='inputCart.php?articleId=2'/>
+                </form>
+                
+                
             </div>
             <div id = "2" class="col border border-primary rounded m-5 pb-2 ">
               <p class="txt">Enrico</p>

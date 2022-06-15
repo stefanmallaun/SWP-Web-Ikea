@@ -71,10 +71,7 @@ session_start();
          }
          
          ?>
-<<<<<<< HEAD
-=======
          
->>>>>>> 5d15d3e5c5c7742cf96815f865219df56a59f6d6
     </body>
 
 </html>

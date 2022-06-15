@@ -137,7 +137,7 @@ session_start();
                         echo "<td><center>" . $articleName . "</center></td>";
                         echo "<td><center>" . $gesamtPreis . "€ </center></td>";
                         
-                        echo "<td><center> <a href='delete.php?personId=$articleId'>entfernen</a></center></td>";
+                        echo "<td><center> <a href='delete.php?articleId=$articleId'>entfernen</a></center></td>";
                         echo "</tr>";
                     }
                     echo "<tr><td></td><td><h3><center>Summe</center></h3></td><td><h3><center>" . $warengesamtpreis . "€ </center></h3></td></tr>"      
