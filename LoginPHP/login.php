@@ -53,8 +53,8 @@ session_start();
              
              if($user !==false ){
                
-                 $dbpasswort=password_hash($passwort,PASSWORD_ARGON2I);
-                    if(password_verify($dbpasswort, $user["passwort"])){
+                
+                    if(password_verify($passwort, $user["passwort"])){
                           $_SESSION["user"]=$user["id"];
                  
                        echo "Benutzer ".$user["vorname"]." angemeldet";
@@ -71,6 +71,10 @@ session_start();
          }
          
          ?>
+<<<<<<< HEAD
+=======
+         
+>>>>>>> 5d15d3e5c5c7742cf96815f865219df56a59f6d6
     </body>
 
 </html>

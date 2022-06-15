@@ -29,9 +29,9 @@ session_start();
         $servername = "localhost";
         $username = "root";
         $passwort = "";
-        $dbname = "ikea";
-      ?>
-      <?php   
+        $dbname = "article";
+      
+         
         //Create connection
         $conn = mysqli_connect($servername,$username,$passwort,$dbname);
     
@@ -103,7 +103,8 @@ session_start();
               <div>
                 <img class ="img" src="img/Tische/lisabo-tisch-schwarz__0737106_pe740884_s5.avif"  text-align: center > 
               </div>
-              <p class="fbText">Preis: 210€ <br> Farben: 1</p>     
+              <p class="fbText">Preis: 210€ <br> Farben: 1</p>   
+                <button type="button" class="btn btn-purple"><i class="fas fa-heart pr-2" ></i>Like</button>
             </div>
             <div id = "2" class="col border border-primary rounded m-5 pb-2 ">
               <p class="txt">Enrico</p>
@@ -117,7 +118,7 @@ session_start();
               <div>
                 <img class ="img" src="img/Tische/moerbylanga-tisch-eichenfurnier-braun-las-__0737110_pe740888_s5.avif"  text-align: center > 
               </div>
-              <p class="fbText">Preis: 210€ <br> Farben: 3</p>
+              <p class="fbText">Preis: 110€ <br> Farben: 7</p>
             </div>
             <div class="col-sm-12 text-right"><a href="#">mehr</a></div>
           </div>
