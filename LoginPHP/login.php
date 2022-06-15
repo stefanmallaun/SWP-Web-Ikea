@@ -71,9 +71,6 @@ session_start();
          }
          
          ?>
-         <?php
-            $_SESSION[$user] = $passwort;
-            ?>
     </body>
 
 </html>
