@@ -39,38 +39,56 @@ session_start();
             </div>
             </div>
             </div>
+        </div>
+        
          
-         <?php
-         include 'db.php';
-         if(isset($_POST['gesendet'])){
-             $email= trim($_POST['email']);
-             $passwort=$_POST['passwort'];
-             $statement=$pdo->prepare('select * from users where email = :email');
-             $result=$statement->execute([
-                 'email'=>$email
-             ]);
-             $user=$statement->fetch();
-             
-             if($user !==false ){
-               
+          <?php
+        
+        $email = $_POST ["email"];
+        $password2 = $_POST["passwort"];
+        
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "web3bg2";
+   
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    // Check connection
+    if ( ! $conn) {
+       die("Connection failed: " . mysqli_connect_error());
+    }
+    
+        
+        $check = mysqli_query($conn, "SELECT * FROM login WHERE email = '$email' AND password = '$password2'"); // checking data
+        $row = mysqli_num_rows($check);
                 
-                    if(password_verify($passwort, $user["passwort"])){
-                          $_SESSION["user"]=$user["id"];
-                 
-                       echo "Benutzer ".$user["vorname"]." angemeldet";
-                    }
-                  else{
-                 echo "Falsche Eingabe";
-             }
-               
-             }
-             else{
-                 echo "Falsche Eingabe";
-             }
-             
-         }
-         
-         ?>
+    
+    //Überprüfung des Passworts
+    
+        if ( ! $conn) {
+       die("Connection failed: " . mysqli_connect_error());
+    }
+    
+        
+        $check = mysqli_query($conn, "SELECT * FROM login WHERE email = '$email' AND password = '$password2'"); // checking data
+        $row = mysqli_num_rows($check);
+                
+    
+    //Überprüfung des Passworts
+    if ($row>0) {
+          header('Location: Spotify.html');
+        
+        }
+        else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+     
+        }
+
+mysqli_close($conn);    
+       ?>
+mysqli_close($conn);    
+       ?>
          
     </body>
 

@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html>
-<?php
-session_start();
-?>
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title >Anmeldung</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
+        
+        
     </head>
+    <?php
+                //website zum Anzeigen: http://localhost/ikea/swp-web-ikea/shoppingCart.php
+    
+                
+
+                
+            ?>
+    <?php 
+        if( isset($_POST['gesendet'])){ //Die Funktion isset() prüft, ob eine Variable gesetzt ist, also deklariert werden muss und nicht NULL ist.
+            
+            if($_POST['passwort1']!=$_POST['passwort2']){ // $_POST ... assoziatives Araay 
+                echo "Passwort stimmt nicht überein";
+                return ;
+            }
+             include 'db.php';
+       // var_dump($_POST); // alle Eingaben vom Formular werden ausgegeben
+        $sql="insert into loogin(vorname, nachname,email, passwort) values(:vorname,:nachname,:email,:passwort)";// :vorname ...ist ein platzhalter
+        $statement=$pdo->prepare($sql);
+        $passwort=$_POST['passwort1']; // password_hash mach aus einem pw wie z.B. 123 zu F455235_# -> passwort kann in der datenbank nicht gesehen werden
+
+        $statement->execute([ // execute sucht und setzt ein
+            'vorname' => $_POST['vorname'], // wird übergeben
+            'nachname' => $_POST['nachname'], 
+            'email' => $_POST['email'],
+            'passwort' => $passwort 
+        ]);
+      
+        // passwort1 und 2 müssen gleich sein
+        // email arf nicht vergeben sein
+           echo "Benutzer eingetragen"; 
+        }
+       
+        
+        ?>
     <body>
         
         <div class="container">
@@ -51,37 +84,9 @@ session_start();
             </div>
             </div>
             </div>
-             <?php 
-        if( isset($_POST['gesendet'])){ //Die Funktion isset() prüft, ob eine Variable gesetzt ist, also deklariert werden muss und nicht NULL ist.
-            
-            if($_POST['passwort1']!=$_POST['passwort2']){ // $_POST ... assoziatives Araay 
-                echo "Passwort stimmt nicht überein";
-                return ;
-            }
-             include 'db.php';
-       // var_dump($_POST); // alle Eingaben vom Formular werden ausgegeben
-        $sql="insert into users(vorname, nachname,email, passwort) values(:vorname,:nachname,:email,:passwort)";// :vorname ...ist ein platzhalter
-        $statement=$pdo->prepare($sql);
-        $passwort= password_hash($_POST['passwort1'], PASSWORD_ARGON2I); // password_hash mach aus einem pw wie z.B. 123 zu F455235_# -> passwort kann in der datenbank nicht gesehen werden
-
-        $statement->execute([ // execute sucht und setzt ein
-            'vorname' => $_POST['vorname'], // wird übergeben
-            'nachname' => $_POST['nachname'], 
-            'email' => $_POST['email'],
-            'passwort' => $passwort 
-        ]);
-      
-        // passwort1 und 2 müssen gleich sein
-        // email arf nicht vergeben sein
-           echo "Benutzer eingetragen"; 
-        }
-       
-        
-        ?>
-        
+             
         </div>
         
         
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
-</html>
