@@ -166,7 +166,7 @@ session_start();
                 <input class="form-check-input" type="checkbox" value="" id="ds">
                 <label class="form-check-label" for="ds">Ich habe die Datenschutzrichtlinien gelesen und stimme ihnen zu.</label>
                 <br>
-                <button type="button" class="button button1">KOSTENPFLICHTIG BESTELLEN!</button>
+                <button type="button" class="button button1" >KOSTENPFLICHTIG BESTELLEN!</button>
                 <?php
                     session_destroy();
                 ?>
